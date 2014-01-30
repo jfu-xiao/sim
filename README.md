@@ -13,10 +13,10 @@ fail fast
 
 ## Setup
 
-rcj requires Ruby 1.9.3 or later. To install, type:
+sim requires Ruby 1.9.3 or later. To install, type:
 
 ```bash
-gem install rcj
+gem install sim
 ```
 
 
