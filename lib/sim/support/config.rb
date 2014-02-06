@@ -1,3 +1,4 @@
+$cucumber_base_report_dir = "features/report"
 $base_screenshot_dir = 'spec/reports/HTML/screenshots'
 $local_run_args = ' -r html_formatter.rb -f CapybaraHtmlFormatter -o spec/reports/HTML/index.html -r fail_fast.rb -r local.rb '
 

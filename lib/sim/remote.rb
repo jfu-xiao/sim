@@ -14,8 +14,8 @@ def set_app_address()
     puts "Registering http://#{ip}:#{port} as root server"
 end
 
-Capybara.javascript_driver = :selenium_phantomjs
-Capybara.default_driver = :rack_test
+Capybara.javascript_driver = :selenium_chrome
+Capybara.default_driver = :selenium_phantomjs
 
 # Capybara remote run
 # # init ip
@@ -47,19 +47,26 @@ Capybara.register_driver :selenium_phantomjs do |app|
     )
 end
 
-
-RSpec.configure do |config|
-  config.include Capybara::DSL
-
-  # this allows each test to use the proper port when using
-  # Capybara's "random available port"
-  config.before(:each) do
-    next if Capybara.current_session.server.nil?
-
+if is_cucumber()
+  puts "yes"
+  Before do |scenario|
     set_app_address()
   end
-
 end
 
+if is_rspec()
+  puts "no"
+  RSpec.configure do |config|
+    config.include Capybara::DSL
+
+    # this allows each test to use the proper port when using
+    # Capybara's "random available port"
+    config.before(:each) do
+      next if Capybara.current_session.server.nil?
+
+      set_app_address()
+    end
+  end
+end
 
 
