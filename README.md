@@ -19,8 +19,28 @@ sim requires Ruby 1.9.3 or later. To install, type:
 gem install sim
 ```
 
+## Run rspec
 
+Remotely:
+```bash
+bundle exec rspec -r 'sim/remote'
+```
 
+Locally:
+```bash
+bundle exec rspec -r 'sim/local'
+```
+
+Headlessly:
+```bash
+bundle exec rspec -r 'sim/local_phantomjs'
+```
+
+## Run cucumber with package locally
+Add the following to root/features/support/env.rb
+```bash
+require 'sim/local'
+```
 
 
 
